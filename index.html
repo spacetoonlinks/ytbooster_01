@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Youtube Player</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        // Your array data
+        var youtube = [
+            {
+                "id":"697f46e3-6426-4177-ac87-6ff1a4d9d6d5",
+                "title":"Muusika",
+                "link":"https://www.youtube.com/watch?v=AajRGe753-o"
+            },
+            {
+                "id":"f8107406-f2a6-4ede-9835-fc38766d607e",
+                "title":"Muusika",
+                "link":"https://www.youtube.com/watch?v=AajRGe753-o"
+            }
+        ];
+        // Extract a array
+        $.map(youtube, function(value, key) {
+            // take the id of youtube link on your array
+            var id = value.link.split("?v="),
+                id = id[1];
+
+            // and displays embed youtube to element #youtube-video
+            $("#youtube-video").append($("<iframe />", {
+                src: "https://youtube.com/embed/"+id+"?autoplay=1",
+                frameborder: 0,
+                width: "100%",
+                height: 300
+            }))
+        });
+    });
+    </script>
+</head>
+<body>
+    <div id="youtube-video"></div>
+</body>
+</html>
