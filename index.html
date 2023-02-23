@@ -1,14 +1,43 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-    <script type="text/javascript" src="https://cs-collector.herokuapp.com/js/collector.js" crossorigin="anonymous" async="">
+    <title>Youtube Player</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        // Your array data
+        var youtube = [
+            {
+                "id":"697f46e3-6426-4177-ac87-6ff1a4d9d6d5",
+                "title":"Muusika",
+                "link":"https://www.youtube.com/watch?v=q-jfhRIT0ko"
+            },
+            {
+                "id":"f8107406-f2a6-4ede-9835-fc38766d607e",
+                "title":"Muusika",
+                "link":"https://www.youtube.com/watch?v=yMkCnn9c5q4"
+            }
+        ];
+        // Extract a array
+        $.map(youtube, function(value, key) {
+            // take the id of youtube link on your array
+            var id = value.link.split("?v="),
+                id = id[1];
+
+            // and displays embed youtube to element #youtube-video
+            $("#youtube-video").append($("<iframe />", {
+                src: "https://youtube.com/embed/"+id+"?playlist=q-jfhRIT0ko&amp;autoplay=1&amp;controls=1&amp;loop=0&amp;mute=1",
+                frameborder: 0,
+                width: "100%",
+                height: 300
+            }))
+        });
+    });
     </script>
-    <script type="text/javascript" src="https://cs-collector.herokuapp.com/js/maliknew.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YJnMIaU3wLc?playlist=YJnMIaU3wLc&amp;autoplay=1&amp;controls=1&amp;loop=0&amp;mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;" allowfullscreen=""></iframe>
+    <div id="youtube-video"></div>
 </body>
 </html>
-
 
 
